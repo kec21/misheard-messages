@@ -2,85 +2,25 @@
 
 
 
-function draw() {
-  background(255);
-  // changes
-}
-
-var fade;
-var fadeAmount = 1
-
 function setup() {
-  createCanvas(800, 800);
-  textSize(50)
-  fade = 0
+  smooth();
+  createCanvas(windowWidth, windowHeight);
+  // Make a <p> element and put it behind the canvas
+  let p = createP('QUITE');
+  p.center();
+  p.style('font-size', '50px');
+  p.style('text-align', 'center');
+  p.style('z-index', '-9999');
 }
 
 function draw() {
-  fill(255, 0, 0, fade)
-  text("hello", 50,50)
-  if (fade<0) fadeAmount=1; 
- 
-  if (fade>255) fadeAmount=-10; 
- 
-  fade += fadeAmount; 
-  print(fade)
-  text("goodbye", 100,200)
-  if (fade<0) fadeAmount=1; 
- 
-  if (fade>255) fadeAmount=-10; 
- 
-  fade += fadeAmount; 
-  print(fade)
-}
-
-var rectWidth = 1000;
-var rectHeight = 600;
-var colourlapse;
-var rx = 60;
-var ry = 60;
-var inc = 0.005;
-
-
-let colors = [[0, 0, 0], [255, 255, 255], [255, 9, 236]]
-let cur_col1 = 1;
-let cur_col2 = 0;
-
-let textContents = ["text number one","text number two","text number three"];
-
-function setup() {
-  frameRate(49);
-  createCanvas(1100, 1100);
-  colourlapse = 0.0;
-}
-
-function draw() {
-  var w = colourlapse * rectWidth;
-  var sx1 = (inc > 0) ? rx : rx + rectWidth - w;
-  var sx2 = (inc > 0) ? rx + w : rx;
-
-  background(255);
-  stroke(255);
-
-  let index1 = cur_col1 % colors.length;
-  let index2 = cur_col2 % colors.length;
-  fill(colors[index1]);
-  rect(sx1, ry, w, rectHeight);
-  // text
-  fill(127);
-  text(textContents[index1],sx2,ry);
-  
-  fill(colors[cur_col2 % colors.length]);
-  rect(sx2, ry, rectWidth-w, rectHeight);
-
-  colourlapse += inc;
-  if (colourlapse >= 1) {
-      colourlapse = 1;
-      inc *= -1;
-      cur_col2 += 2;
-  } else if (colourlapse <= 0) {
-      colourlapse = 0;
-      inc *= -1;
-      cur_col1 += 2;
-  }
+  background(250, 250, 150);
+  fill(15, 195, 185);
+  noStroke();
+  textSize(100);
+  text('QUIET', 50, 100);
+  fill(0, 102, 153);
+  erase();
+  translate(0, 0, 40);
+  noErase();
 }
