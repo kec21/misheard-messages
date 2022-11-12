@@ -2,25 +2,26 @@
 
 
 
-function setup() {
-  smooth();
+let img;
+let topLayer;
+
+function preload() {
+  img = loadImage(image.png);
+}
+
+function setup(){
   createCanvas(windowWidth, windowHeight);
-  // Make a <p> element and put it behind the canvas
-  let p = createP('QUITE');
-  p.center();
-  p.style('font-size', '50px');
-  p.style('text-align', 'center');
-  p.style('z-index', '-9999');
+  topLayer = createGraphics(w, h);
+
+  topLayer.background(200);
+  topLayer.textSize(50);
+  topLayer.textAlign(CENTER);
+  topLayer.text("SCRATCH ME", width/2, height/2);
+
+  topLayer.strokeWeight(40);
+  topLayer.blendMode(REMOVE);
 }
 
 function draw() {
-  background(250, 250, 150);
-  fill(15, 195, 185);
-  noStroke();
-  textSize(100);
-  text('QUIET', 50, 100);
-  fill(0, 102, 153);
-  erase();
-  translate(0, 0, 40);
-  noErase();
+  background(100)
 }
